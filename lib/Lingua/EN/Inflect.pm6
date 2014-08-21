@@ -14,7 +14,7 @@ method classical {
 }
 
 ## Standard ways to use Lingua::EN::Inflect
-method invoke (|p) { $.inflect(|p) }
+method invoke (\p) { self.inflect(|p) }
 
 proto infix:<pl-eq>  ($a, $b) is equiv(&[eq])  is export { * }
 proto infix:<pl-cmp> ($a, $b) is equiv(&[cmp]) is export { * }
@@ -73,7 +73,7 @@ method noun ($word, $count = $.count) {
 
     # HANDLE USER-DEFINED NOUNS
 
-    return $value if defined $value = $!map.ud_match($word);
+    return $value if defined $value = $!map.ud_match($word):n;
 
     # HANDLE EMPTY WORD, SINGULAR COUNT AND UNINFLECTED PLURALS
 
